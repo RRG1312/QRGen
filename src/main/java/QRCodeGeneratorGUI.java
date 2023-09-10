@@ -3,13 +3,14 @@ import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
-import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
+import java.io.File;
+
 
 public class QRCodeGeneratorGUI extends JFrame {
+    //si quieres hacer un resize de la imagen simplmente cambia estos valores
     private static final int WIDTH = 300;
     private static final int HEIGHT = 300;
 
@@ -24,6 +25,10 @@ public class QRCodeGeneratorGUI extends JFrame {
 
             // Convertir la matriz de bits en una imagen
             BufferedImage qrImage = MatrixToImageWriter.toBufferedImage(bitMatrix);
+
+            // Guardar la imagen como un archivo PNG en la carpeta "resources"
+            File qrFile = new File("src/main/resources/"+text+".png");
+            ImageIO.write(qrImage, "PNG", qrFile);
 
             // Mostrar la imagen en un JLabel
             ImageIcon icon = new ImageIcon(qrImage);
