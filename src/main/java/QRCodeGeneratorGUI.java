@@ -26,6 +26,7 @@ public class QRCodeGeneratorGUI extends JFrame {
             // Convertir la matriz de bits en una imagen
             BufferedImage qrImage = MatrixToImageWriter.toBufferedImage(bitMatrix);
 
+            //recoge la ruta del archivo origen y cambia la subruta target/classes por una ruta con la carpeta resources
             String resourceFolder = Main.class.getResource("/").getPath();
             String rutaCompleta = resourceFolder.replace("target/classes/","")+"src/main/resources/"+text+".png";
 
