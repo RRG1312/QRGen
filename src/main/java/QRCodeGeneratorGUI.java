@@ -26,8 +26,11 @@ public class QRCodeGeneratorGUI extends JFrame {
             // Convertir la matriz de bits en una imagen
             BufferedImage qrImage = MatrixToImageWriter.toBufferedImage(bitMatrix);
 
+            String resourceFolder = Main.class.getResource("/").getPath();
+            String rutaCompleta = resourceFolder.replace("target/classes/","")+"src/main/resources/"+text+".png";
+
             // Guardar la imagen como un archivo PNG en la carpeta "resources"
-            File qrFile = new File("src/main/resources/"+text+".png");
+            File qrFile = new File(rutaCompleta);
             ImageIO.write(qrImage, "PNG", qrFile);
 
             // Mostrar la imagen en un JLabel
